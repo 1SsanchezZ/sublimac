@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poleras</title>
+    <link rel="stylesheet" href="Index.css">
+    <!-- Agregar icono de la pestaña del navegador -->
+    <link rel="icon" href="subli/unamed.png.JPG" type="image/jpeg">
+    <!-- Opcionalmente, puedes agregar también el icono para dispositivos Apple -->
+    <link rel="apple-touch-icon" href="subli/apple-touch-icon.png">
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JavaScript de Bootstrap (necesario para el funcionamiento del carousel) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+      <a href="index.html" class="logo">
+        <img src="subli/unamed.png.JPG" alt="Logo">
+    </a>
+    <img src="subli/Captura_de_pantalla_2024-04-03_131455-removebg-preview.png" alt="Titulo" class="title-image">
+    <input id="icon-search--input" class="header-mobile-search__input" type="text" value="" placeholder="¿Qué quieres buscar?" autocomplete="off" autocapitalize="off" aria-invalid="false">
+    <div class="cart-container">
+        <img src="subli/carro-removebg-preview.png" alt="Carrito de Compras"> 
+    </div>
+    </header>
+        <!-- Barra de tareas -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="Index.html">Inicio</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="Tazas.html" id="navbarDropdownTazas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Tazas
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownTazas">
+                              <li><a class="dropdown-item" href="tazas.html">Tazas</a></li>
+                              <li><a class="dropdown-item" href="Personalizado.html">Personalizado</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="Poleras.html" id="navbarDropdownPoleras" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Poleras
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownPoleras">
+                              <li><a class="dropdown-item" href="poleras.html">Poleras</a></li>
+                              <li><a class="dropdown-item" href="Personalizado.html">Personalizado</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="Cojines.html" id="navbarDropdownCojines" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Cojines
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownCojines">
+                              <li><a class="dropdown-item" href="cojines.html">Cojines</a></li>
+                              <li><a class="dropdown-item" href="Personalizado.html">Personalizado</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="BTS.html" id="navbarDropdownTazas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              BTS
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownTazas">
+                              <li><a class="dropdown-item" href="tazas.html">BTS</a></li>
+                              <li><a class="dropdown-item" href="Personalizado.html">Personalizado</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="Informaciones.html">Informaciones</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+        
+        <!-- Aquí agregamos el título y el texto -->
+        <div class="container text-center mt-4">
+            <h1>POLERAS</h1>
+            <p class="lead">AQUI ENCONTRARÁS POLERAS PARA PERSONALIZAR CON TU FOTO O IMAGEN QUE QUIERAS</p>
+        </div>
+        <!-- Fin del título y del texto -->
+
+  <!-- Aquí comienza el segundo código -->
+  <div class="container">
+    <div class="row">
+      <!-- Elementos generados a partir del JSON -->
+      <main id="items" class="col-sm-8 row"></main>
+      <!-- Carrito -->
+      <aside class="col-sm-4">
+        <h2>Carrito</h2>
+        <!-- Elementos del carrito -->
+        <ul id="carrito" class="list-group"></ul>
+        <hr>
+        <!-- Precio total -->
+        <p class="text-right">Total: <span id="total"></span></p>
+        <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+      </aside>
+    </div>
+  </div>
+  <!-- Aquí termina el segundo código -->
+
+      <!-- Aquí empieza el código JavaScript -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Variables
+            const baseDeDatos = [
+                    {
+                        id: 1,
+                        nombre: 'Simpsons',
+                        precio: 300,
+                        imagen: 'subli/diseño 1.png'
+                    },
+                    {
+                        id: 2,
+                        nombre: 'The vampires diaries',
+                        precio: 200,
+                        imagen: 'subli/diseño 2.png'
+                    },
+                    {
+                        id: 3,
+                        nombre: 'Anuel brr',
+                        precio: 500,
+                        imagen: 'subli/diseño 3.png'
+                    },
+                    {
+                        id: 4,
+                        nombre: 'REAL HASTA LA MUERTE',
+                        precio: 600,
+                        imagen: 'subli/diseño 4.png'
+                    }
+                ];
+            let carrito = [];
+            const divisa = '$';
+            const DOMitems = document.querySelector('#items');
+            const DOMcarrito = document.querySelector('#carrito');
+            const DOMtotal = document.querySelector('#total');
+            const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+
+            // Funciones
+            /**
+             * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
+             */
+            function renderizarproductos() {
+                baseDeDatos.forEach((info) => {
+                    // Estructura
+                    const miNodo = document.createElement('div');
+                    miNodo.classList.add('card', 'col-sm-4');
+                    // Body
+                    const miNodoCardBody = document.createElement('div');
+                    miNodoCardBody.classList.add('card-body');
+                    // Titulo
+                    const miNodoTitle = document.createElement('h5');
+                    miNodoTitle.classList.add('card-title');
+                    miNodoTitle.textContent = info.nombre;
+                    // Imagen
+                    const miNodoImagen = document.createElement('img');
+                    miNodoImagen.classList.add('img-fluid');
+                    miNodoImagen.setAttribute('src', info.imagen);
+                    // Precio
+                    const miNodoPrecio = document.createElement('p');
+                    miNodoPrecio.classList.add('card-text');
+                    miNodoPrecio.textContent = `${info.precio}${divisa}`;
+                    // Boton
+                    const miNodoBoton = document.createElement('button');
+                    miNodoBoton.classList.add('btn', 'btn-primary');
+                    miNodoBoton.textContent = 'Comprar Producto';
+                    miNodoBoton.setAttribute('marcador', info.id);
+                    miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                    // Insertamos
+                    miNodoCardBody.appendChild(miNodoImagen);
+                    miNodoCardBody.appendChild(miNodoTitle);
+                    miNodoCardBody.appendChild(miNodoPrecio);
+                    miNodoCardBody.appendChild(miNodoBoton);
+                    miNodo.appendChild(miNodoCardBody);
+                    DOMitems.appendChild(miNodo);
+                });
+            }
+
+            /**
+             * Evento para añadir un producto al carrito de la compra
+             */
+            function anyadirProductoAlCarrito(evento) {
+                // Anyadimos el Nodo a nuestro carrito
+                carrito.push(evento.target.getAttribute('marcador'));
+                // Actualizamos el carrito
+                renderizarCarrito();
+            }
+
+            /**
+             * Dibuja todos los productos guardados en el carrito
+             */
+            function renderizarCarrito() {
+                // Vaciamos todo el html
+                DOMcarrito.textContent = '';
+                // Quitamos los duplicados
+                const carritoSinDuplicados = [...new Set(carrito)];
+                // Generamos los Nodos a partir de carrito
+                carritoSinDuplicados.forEach((item) => {
+                // Obtenemos el item que necesitamos de la variable base de datos
+                const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                    // ¿Coincide las id? Solo puede existir un caso
+                    return itemBaseDatos.id === parseInt(item);
+                });
+                // Cuenta el número de veces que se repite el producto
+                const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+                    // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
+                    return itemId === item ? total += 1 : total;
+                }, 0);
+                // Creamos el nodo del item del carrito
+                const miNodo = document.createElement('li');
+                miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+                miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
+                // Boton de borrar
+                const miBoton = document.createElement('button');
+                miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+                miBoton.textContent = 'X';
+                miBoton.style.marginLeft = '1rem';
+                miBoton.dataset.item = item;
+                miBoton.addEventListener('click', borrarItemCarrito);
+                // Mezclamos nodos
+                miNodo.appendChild(miBoton);
+                DOMcarrito.appendChild(miNodo);
+                });
+                // Renderizamos el precio total en el HTML
+                DOMtotal.textContent = calcularTotal();
+            }
+
+            /**
+             * Evento para borrar un elemento del carrito
+             */
+            function borrarItemCarrito(evento) {
+                // Obtenemos el producto ID que hay en el boton pulsado
+                const id = evento.target.dataset.item;
+                // Borramos todos los productos
+                carrito = carrito.filter((carritoId) => {
+                return carritoId !== id;
+                });
+                // volvemos a renderizar
+                renderizarCarrito();
+            }
+
+            /**
+             * Calcula el precio total teniendo en cuenta los productos repetidos
+             */
+            function calcularTotal() {
+                // Recorremos el array del carrito
+                return carrito.reduce((total, item) => {
+                // De cada elemento obtenemos su precio
+                const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                    return itemBaseDatos.id === parseInt(item);
+                });
+                // Los sumamos al total
+                return total + miItem[0].precio;
+                }, 0).toFixed(2);
+            }
+
+            /**
+             * Varia el carrito y vuelve a dibujarlo
+             */
+            function vaciarCarrito() {
+                // Limpiamos los productos guardados
+                carrito = [];
+                // Renderizamos los cambios
+                renderizarCarrito();
+            }
+
+            // Eventos
+            DOMbotonVaciar.addEventListener('click', vaciarCarrito);
+
+            // Inicio
+            renderizarproductos();
+            renderizarCarrito();
+        });
+      </script>
+      <!-- Aquí termina el código JavaScript -->
+
+      <!-- Contenedor para el contenido adicional -->
+<div class="additional-content">
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <p>TIENDA SUBLIMAC.CL - Tienda en linea de personalizados en Chile</p>
+              <p>SÍGUENOS</p>
+          </div>
+          <div class="col">
+              <p>TERMINOS LEGALES</p>
+              <p>DESPACHOS</p>
+              <p>FORMAS DE PAGO</p>
+              <p>TÉRMINOS Y CONDICIONES</p>
+          </div>
+          <div class="col">
+              <p>CONTÁCTANOS</p>
+              <p>Tienda Sublimac.cl@gmail.com</p>
+              <p>+569 5677646</p>
+              <p>569709865764</p>
+              <p>Tienda en línea, Santiago de Chile</p>
+              <p>Lunes a Viernes de 9:30 a 20:00 horas</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <p>ÚNETE PARA NOVEDADES</p>
+              <input type="email" placeholder="Tu correo">
+              <button type="button">ENVIAR</button>
+          </div>
+          <div class="col">
+              <p>MÉTODOS DE PAGO ACEPTADOS</p>
+              <!-- Imágenes de tarjetas de crédito y débito -->
+              <div class="accepted-payment-methods">
+                  <img src="subli/Visa.png" alt="Visa">
+                  <img src="subli/Mastercard.png" alt="Mastercard">
+                  <img src="subli/Amex.png" alt="American Express">
+                  <img src="subli/Paypal.png" alt="Paypal">
+                  <!-- Y así sucesivamente para otras tarjetas -->
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <p>Tienda Sublimac.CL - Tienda en linea de personalizados en Chile 2024. Todos los derechos reservados.</p>
+              <p>Powered by Jumpseller.</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>
